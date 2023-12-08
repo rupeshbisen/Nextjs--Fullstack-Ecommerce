@@ -18,10 +18,11 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+.buttonClass {
+  @apply mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white
 }
