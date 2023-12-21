@@ -7,7 +7,7 @@ import CommonCart from '@/components/CommonCart';
 import { GlobalContext } from '@/context';
 import { deleteFromCart, getAllCartItems } from '@/service/Cart';
 
-interface CartProps {}
+interface CartProps { }
 
 const Cart: FC<CartProps> = () => {
   const {
@@ -28,32 +28,30 @@ const Cart: FC<CartProps> = () => {
       const updatedData =
         res.data && res.data.length
           ? res.data.map((item: { productID: { onSale: string; price: number; priceDrop: number; }; }) => ({
-              ...item,
-              productID: {
-                ...item.productID,
-                price:
-                  item.productID.onSale === 'yes'
-                    ? parseInt(
-                        (
-                          item.productID.price -
-                          item.productID.price * (item.productID.priceDrop / 100)
-                        ).toFixed(2)
-                      )
-                    : item.productID.price,
-              },
-            }))
+            ...item,
+            productID: {
+              ...item.productID,
+              price:
+                item.productID.onSale === 'yes'
+                  ? parseInt(
+                    (
+                      item.productID.price -
+                      item.productID.price * (item.productID.priceDrop / 100)
+                    ).toFixed(2)
+                  )
+                  : item.productID.price,
+            },
+          }))
           : [];
       setCartItems(updatedData);
       setPageLevelLoader(false);
       localStorage.setItem('cartItems', JSON.stringify(updatedData));
     }
-
-    console.log(res);
   }
 
   useEffect(() => {
     if (user !== null) extractAllCartItems();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   async function handleDeleteCartItem(getCartItemID: string) {

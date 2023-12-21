@@ -93,7 +93,6 @@ export default function AdminAddNewProduct() {
     }
     async function handleAddProduct() {
         setComponentLevelLoader({ loading: true, id: "" });
-        console.log("just before submit", formData)
         const res =
             currentUpdatedProduct !== null
                 ? await updateAProduct(formData)

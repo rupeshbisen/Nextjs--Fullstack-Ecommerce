@@ -63,8 +63,6 @@ const ProductButton: FC<ProductButtonProps> = ({ item }) => {
             setComponentLevelLoader({ loading: false, id: '' });
             setShowCartModal(true);
         }
-
-        console.log('add-to-cart', res);
     };
     return isAdminView ? (
         <>

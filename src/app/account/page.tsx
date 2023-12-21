@@ -49,8 +49,6 @@ const Account: FC = () => {
             })
             : await addNewAddress({ ...addressFormData, userID: user?._id });
 
-        console.log(res);
-
         if (res.success) {
             setComponentLevelLoader({ loading: false, id: '' });
             toast.success(res.message, {
@@ -115,7 +113,7 @@ const Account: FC = () => {
 
     useEffect(() => {
         if (user !== null) extractAllAddresses();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user]);
 
     return (

@@ -139,7 +139,6 @@ export default function Checkout() {
         })
         console.log((result as { error: StripeError }).error);
     }
-    console.log("checkoutFormData", checkoutFormData)
 
     useEffect(() => {
         if (orderSuccess) {

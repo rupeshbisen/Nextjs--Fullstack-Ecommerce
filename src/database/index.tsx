@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 
-const DB_NAME = "EcommerceDatabase"
 const connectToDB = async () => {
     try {
         const connectionInstance = await mongoose.connect(`${process.env.MONGODB_URI}/`)
@@ -10,5 +9,4 @@ const connectToDB = async () => {
         process.exit(1)
     }
 }
-console.log( 'hello',process.env.STORAGE_BUCKET)
 export default connectToDB

@@ -24,8 +24,6 @@ export default function AdminView() {
         setPageLevelLoader(true);
         const res = await getAllOrdersForAllUsers();
 
-        console.log(res);
-
         if (res.success) {
             setPageLevelLoader(false);
             setAllOrdersForAllUsers(
