@@ -89,13 +89,13 @@ export default function CommonDetails({ item }: Item) {
                         <div className="mt-10 flex flex-col items-center justify-between space-y-4 botder-t border-b py-4 sm:flex-row sm:space-y-0">
                             <div className="flex items-end">
                                 <h1
-                                    className={`text-3xl font-bold mr-2 ${item.onSale === "yes" ? "line-through" : ""
+                                    className={`text-3xl font-bold mr-2 ${item.onSale === "yes" ? "line-through text-gray-500" : ""
                                         }`}
                                 >
                                     ${item && item.price}
                                 </h1>
                                 {item.onSale === "yes" ? (
-                                    <h1 className="text-3xl font-bold text-red-700">{`$${(
+                                    <h1 className="text-3xl font-bold text-gray-900">{`$${(
                                         item.price -
                                         item.price * (item.priceDrop / 100)
                                     ).toFixed(2)}`}</h1>

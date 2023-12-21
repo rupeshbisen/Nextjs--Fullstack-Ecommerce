@@ -14,7 +14,7 @@ export async function POST(req: Request) {
         if (isAuthUser) {
             const res = await req.json();
 
-            const session = await stripe.Checkout.session.create({
+            const session = await stripe.checkout.sessions.create({
                 payment_method_types: ["card"],
                 line_items: res,
                 mode: "payment",

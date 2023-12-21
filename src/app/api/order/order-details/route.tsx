@@ -20,7 +20,7 @@ export async function GET(req: Request) {
                 message: "Product id is reqired"
             })
 
-            const extractOrderDetails = await Order.findById(id).populate('orderItems.produt');
+            const extractOrderDetails = await Order.findById(id).populate('orderItems.product');
 
             if (extractOrderDetails) {
                 return NextResponse.json({
