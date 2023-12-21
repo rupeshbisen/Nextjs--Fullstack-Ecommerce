@@ -11,11 +11,11 @@ const schema = Joi.object({
 });
 
 export const dynamic = "force-dynamic";
-export async function POST(req:Request) {
+export async function POST(req: Request) {
     await connectToDB();
 
     const { email, password } = await req.json();
-    
+
     const { error } = schema.validate({ email, password });
 
     if (error) {
@@ -68,7 +68,7 @@ export async function POST(req:Request) {
 
         });
     } catch (error) {
-        console.log('Error while logging In. Please try again');
+        console.log('Error while logging In. Please try again', error);
         return NextResponse.json({
             success: false,
             message: 'Something went wrong ! Please try again later',

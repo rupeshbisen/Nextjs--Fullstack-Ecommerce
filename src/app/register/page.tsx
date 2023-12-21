@@ -36,7 +36,6 @@ export default function Register() {
             ? true
             : false;
     }
-    console.log(isFormValid());
 
     async function handleRegisterOnSubmit() {
         setPageLevelLoader(true);
@@ -56,8 +55,6 @@ export default function Register() {
             setPageLevelLoader(false);
             setFormData(initialFormData);
         }
-
-        console.log(formData);
     }
 
     useEffect(() => {

@@ -7,7 +7,7 @@ interface ModelProps {
     show: boolean;
     setShow: (show: boolean) => void;
     modalTitle: string;
-    mainContent: JSX.Element;
+    mainContent: JSX.Element| null;
     showButtons: boolean,
     buttonComponent: JSX.Element;
     showModalTitle: boolean

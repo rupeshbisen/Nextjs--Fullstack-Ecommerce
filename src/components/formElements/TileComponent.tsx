@@ -1,4 +1,4 @@
-import { sizes } from '@/types/admin/addProductTypes';
+import { sizes } from '@/types/productTypes';
 import React, { FC } from 'react';
 
 interface TileComponentProps {

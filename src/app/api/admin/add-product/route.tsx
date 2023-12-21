@@ -1,6 +1,8 @@
 import connectToDB from "@/database";
+import AuthUser from "@/middleware/AuthUser";
 import Product from "@/models/product.model";
-import Joi, { date } from "joi";
+import Joi from "joi";
+import { JwtPayload } from "jsonwebtoken";
 import { NextResponse } from "next/server";
 
 const AdminAddNewProductSchema = Joi.object({
@@ -20,8 +22,10 @@ export const dynamic = 'force-dynamic';
 export async function POST(req: Request) {
     try {
         await connectToDB();
-        const user = 'admin'
-        if (user === 'admin') {
+
+        const isAuthUser = await AuthUser(req)
+
+        if ((isAuthUser as JwtPayload)?.role === 'admin') {
             const extractData = await req.json();
 
             const {

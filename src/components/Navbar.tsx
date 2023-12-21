@@ -1,10 +1,11 @@
 'use client'
 import { adminOption, navOption } from '@/utils'
-import React, { FC, Fragment, useContext } from 'react'
+import React, { FC, Fragment, useContext, useEffect } from 'react'
 import CommonModal from './CommonModal'
 import { GlobalContext } from '@/context'
 import { usePathname, useRouter } from 'next/navigation'
 import Cookies from 'js-cookie'
+import CartModel from './CartModel'
 
 interface NavItemsProps {
     isModalView?: boolean;
@@ -42,17 +43,32 @@ const NavItems: FC<NavItemsProps> = ({ isModalView = false, isAdminView, router 
 }
 
 export default function Navbar() {
-    const contextValues = useContext(GlobalContext);
+    const {
+        user,
+        setUser,
+        isAuthUser,
+        setIsAuthUser,
+        showNavModal,
+        setShowNavModal,
+        currentUpdatedProduct,
+        setCurrentUpdatedProduct,
+        showCartModal,
+        setShowCartModal
+
+    } = useContext(GlobalContext);
 
     const router = useRouter();
     const pathName = usePathname();
 
-    if (!contextValues) {
-        // Handle the case when the context values are null
-        return null;
-    }
-    const { showNavModal, setShowNavModal } = contextValues;
-    const { user, isAuthUser, setIsAuthUser, setUser } = contextValues
+    useEffect(() => {
+        if (
+            pathName !== "/admin-view/add-product" &&
+            currentUpdatedProduct !== null
+        )
+            setCurrentUpdatedProduct(null);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [pathName]);
+
 
     const handelLogout = () => {
         setIsAuthUser(false);
@@ -72,8 +88,8 @@ export default function Navbar() {
                     <div className='flex md:order-2 gap-2 '>
                         {!isAdminView && isAuthUser ? (
                             <Fragment>
-                                <button className={"buttonClass"}>Account</button>
-                                <button className={"buttonClass"}>Cart</button>
+                                <button onClick={()=>router.push("/account")} className={"buttonClass"}>Account</button>
+                                <button className={"buttonClass"} onClick={()=> setShowCartModal(true)}>Cart</button>
                             </Fragment>
                         ) : null
                         }
@@ -133,6 +149,10 @@ export default function Navbar() {
                 modalTitle=''
                 showButtons
             />
+            {
+                showCartModal &&
+                <CartModel />
+            }
         </>
     )
 }

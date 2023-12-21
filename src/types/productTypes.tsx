@@ -4,6 +4,7 @@ export interface sizes {
 }
 
 export interface AddProductTypes {
+    _id?: string;
     name: string;
     price: number;
     description: string;
@@ -13,5 +14,12 @@ export interface AddProductTypes {
     onSale: string;
     imageUrl: string;
     priceDrop: number;
-    [key: string]: string | number | sizes[];
+    [key: string]: string | number | sizes[] | undefined;
+}
+
+export interface cartItems {
+    _id: string;
+    userID: string;
+    productID: AddProductTypes;
+    quantity: number,
 }

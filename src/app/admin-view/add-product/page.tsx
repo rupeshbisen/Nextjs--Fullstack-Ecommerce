@@ -5,13 +5,13 @@ import SelectComponent from '@/components/formElements/SelectComponent'
 import TileComponent from '@/components/formElements/TileComponent'
 import ComponentLevelLoader from '@/components/loader/ComponentLevelLoader'
 import { GlobalContext } from '@/context'
-import { AddProductTypes } from '@/types/admin/addProductTypes';
+import { AddProductTypes } from '@/types/productTypes';
 import { AvailableSizes, adminAddProductformControls, firbaseStorageURL, firebaseConfig } from '@/utils'
 import { initializeApp } from 'firebase/app';
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 import { useRouter } from 'next/navigation';
 import React, { useContext, useEffect, useState } from 'react'
-import { addNewProduct } from '@/service/product'
+import { addNewProduct, updateAProduct } from '@/service/product'
 import { toast } from 'react-toastify';
 
 const app = initializeApp(firebaseConfig);
@@ -94,7 +94,10 @@ export default function AdminAddNewProduct() {
     async function handleAddProduct() {
         setComponentLevelLoader({ loading: true, id: "" });
         console.log("just before submit", formData)
-        const res = await addNewProduct(formData)
+        const res =
+            currentUpdatedProduct !== null
+                ? await updateAProduct(formData)
+                : await addNewProduct(formData);
         if (res.success) {
             setComponentLevelLoader({ loading: false, id: "" });
             toast.success(res.message, {
@@ -115,6 +118,7 @@ export default function AdminAddNewProduct() {
         }
 
     }
+
     return (
         <div className='w-full mt-5 mr-0 mb-0 ml-0 relative'>
             <div className='flex flex-col items-start justify-start p-10 bg-white shadow-2xl rounded-xl relative '>
