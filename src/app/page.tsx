@@ -11,7 +11,7 @@ import { useContext, useEffect, useState } from "react";
 export default function Home() {
   const { isAuthUser } = useContext(GlobalContext);
 
-  const [products, setProducts] = useState<AddProductTypes>([]);
+  const [products, setProducts] = useState<AddProductTypes[]>([]);
   const router = useRouter();
 
   async function getListOfProducts() {

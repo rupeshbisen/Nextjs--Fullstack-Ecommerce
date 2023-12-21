@@ -19,6 +19,7 @@ export interface AddProductTypes {
 
 export interface cartItems {
     _id: string;
+    id: string;
     userID: string;
     productID: AddProductTypes;
     quantity: number,

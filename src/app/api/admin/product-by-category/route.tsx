@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
-export async function GET(req: { url: string | URL; }) {
+export async function GET(req:Request) {
     try {
         await connectToDB();
         const { searchParams } = new URL(req.url);

@@ -53,6 +53,7 @@ const Cart: FC<CartProps> = () => {
 
   useEffect(() => {
     if (user !== null) extractAllCartItems();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   async function handleDeleteCartItem(getCartItemID: string) {

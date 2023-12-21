@@ -2,19 +2,10 @@
 import { FC } from "react";
 import { useRouter } from "next/navigation";
 import ComponentLevelLoader from "./loader/ComponentLevelLoader";
-
-interface CartItem {
-    id: string;
-    productID: {
-        imageUrl: string;
-        name: string;
-        price: number;
-    };
-    _id: string;
-}
+import { cartItems } from "@/types/productTypes";
 
 interface CommonCartProps {
-    cartItems: CartItem[];
+    cartItems: cartItems[];
     handleDeleteCartItem: (id: string) => void;
     componentLevelLoader: {
         loading: boolean;

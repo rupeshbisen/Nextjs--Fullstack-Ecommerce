@@ -43,11 +43,11 @@ export default function Checkout() {
 
     useEffect(() => {
         async function createFinalOrder() {
-            const isStripe = JSON.parse(localStorage.getItem('stripe'))
+            const isStripe = JSON.parse(localStorage.getItem('stripe') as string)
 
             if (isStripe && params.get('status') === 'success' && cartItems && cartItems.length > 0) {
                 setIsOrderProcessing(true);
-                const getCheckoutFormData = JSON.parse(localStorage.getItem('checkoutFormData'));
+                const getCheckoutFormData = JSON.parse(localStorage.getItem('checkoutFormData') as string);
 
                 const createFinalCheckoutFormData = {
                     user: user?._id,
