@@ -116,7 +116,7 @@ export default function Login() {
                                     <p className='text-gray-800' >New to website ?</p>
                                     <button
                                         className="inline-flex w-full items-center justify-center bg-black px-6 py-4 text-lg
-                                         first-letter:text-white transition-all duration-200 ease-in-out focus:shadow font-medium uppercase tracking-wide"
+                                         text-white transition-all duration-200 ease-in-out focus:shadow font-medium uppercase tracking-wide"
                                         onClick={() => router.push("/register")}
                                     >
                                         Register

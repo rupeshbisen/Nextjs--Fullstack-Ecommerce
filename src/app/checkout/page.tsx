@@ -48,7 +48,7 @@ export default function Checkout() {
             if (isStripe && params.get('status') === 'success' && cartItems && cartItems.length > 0) {
                 setIsOrderProcessing(true);
                 const getCheckoutFormData = JSON.parse(localStorage.getItem('checkoutFormData') as string);
-
+                
                 const createFinalCheckoutFormData = {
                     user: user?._id,
                     shippingAddress: getCheckoutFormData.shippingAddress,
@@ -91,13 +91,7 @@ export default function Checkout() {
             setSelectedAddress(null)
             setCheckoutFormData({
                 ...checkoutFormData,
-                shippingAddress: {
-                    fullName: "",
-                    address: "",
-                    city: "",
-                    country: "",
-                    postalCode: ""
-                }
+                shippingAddress: {}
             });
             return;
         }
@@ -133,7 +127,7 @@ export default function Checkout() {
         setIsOrderProcessing(true);
         localStorage.setItem("stripe", true.toString());
         localStorage.setItem('checkoutFormData', JSON.stringify(checkoutFormData));
-
+        
         const result = await stripe?.redirectToCheckout({
             sessionId: res.id
         })

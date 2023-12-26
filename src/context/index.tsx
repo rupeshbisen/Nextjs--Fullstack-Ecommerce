@@ -49,13 +49,7 @@ interface GlobalContextProps {
 export const GlobalContext = createContext<GlobalContextProps>({} as GlobalContextProps);
 
 export const initialCheckoutFormData: CheckoutFormDataTypes = {
-    shippingAddress: {
-        fullName: '',
-        city: '',
-        country: '',
-        postalCode: '',
-        address: ''
-    },
+    shippingAddress: {},
     paymentMethod: '',
     totalPrice: 0,
     isPaid: false,

@@ -10,7 +10,7 @@ export interface AddressTypes {
 }
 
 export interface CheckoutFormDataTypes {
-    shippingAddress: AddressTypes
+    shippingAddress: object;
     paymentMethod: string;
     totalPrice: number;
     isPaid: boolean;
