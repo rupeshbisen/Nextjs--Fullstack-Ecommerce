@@ -21,7 +21,7 @@ export const addNewProduct = async (formData: AddProductTypes) => {
 
 export const getAllAdminProducts = async () => {
     try {
-        const res = await fetch("http://localhost:3000/api/admin/all-products", {
+        const res = await fetch("https://ev-shine-ecommerce.vercel.app/api/admin/all-products", {
             method: "GET",
             cache: "no-store",
         });
@@ -73,7 +73,7 @@ export const deleteAProduct = async (id: string) => {
 export const productByCategory = async (id: string) => {
     try {
         const res = await fetch(
-            `http://localhost:3000/api/admin/product-by-category?id=${id}`,
+            `https://ev-shine-ecommerce.vercel.app/api/admin/product-by-category?id=${id}`,
             {
                 method: 'GET',
                 cache: "no-store",
@@ -91,7 +91,7 @@ export const productByCategory = async (id: string) => {
 export const productById = async (id: string) => {
     try {
         const res = await fetch(
-            `http://localhost:3000/api/admin/product-by-id?id=${id}`,
+            `https://ev-shine-ecommerce.vercel.app/api/admin/product-by-id?id=${id}`,
             {
                 method: 'GET',
                 cache: "no-store",
